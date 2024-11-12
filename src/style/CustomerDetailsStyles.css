@@ -1,0 +1,63 @@
+.customer-details-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.customer-details-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.customer-details-content {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.customer-details-content p {
+  margin: 8px 0;
+}
+
+.customer-details-actions {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn-delete,
+.btn-back {
+  width: 100px; /* Set a fixed width for consistency */
+  height: 40px; /* Set a fixed height for alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f44336; /* Red */
+}
+
+.btn-back {
+  background-color: #007bff; /* Blue */
+}
+
+.btn-delete:hover {
+  background-color: #d32f2f;
+}
+
+.btn-back:hover {
+  background-color: #0056b3;
+}

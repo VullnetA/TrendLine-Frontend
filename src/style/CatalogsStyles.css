@@ -1,0 +1,108 @@
+.catalogs-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-section {
+  width: 45%;
+  margin: 20px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.catalog-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.catalog-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.catalog-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-add,
+.btn-save,
+.btn-edit,
+.btn-delete,
+.btn-done {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-add {
+  background-color: #28a745;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
+
+.btn-save {
+  background-color: #007bff;
+}
+
+.btn-save:hover {
+  background-color: #0056b3;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.btn-done {
+  background-color: #28a745;
+}
+
+.btn-done:hover {
+  background-color: #218838;
+}
+
+.input-add,
+.input-edit {
+  width: 60%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.catalog-loading,
+.catalog-error {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}

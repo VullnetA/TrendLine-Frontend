@@ -1,0 +1,63 @@
+.add-container {
+  width: 100%;
+  max-width: 400px; /* Adjust this value as needed */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-input,
+.add-button {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  max-width: 100%; /* Ensures the input doesn't exceed the container width */
+}
+
+.add-input {
+  width: 100%; /* Full width within the container */
+  max-width: 400px; /* Limits the maximum width */
+  margin: 0 auto; /* Centers the input */
+}
+
+.add-button {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  width: 150px; /* Adjust as needed */
+  margin: 0 auto; /* Center the button */
+}
+
+.add-button:hover {
+  background-color: #555;
+}
+
+.add-error {
+  color: red;
+  margin-top: 15px;
+  text-align: center;
+}

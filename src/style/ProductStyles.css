@@ -1,0 +1,135 @@
+.products-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.products-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.products-table th,
+.products-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.products-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.products-loading,
+.products-error,
+.products-empty {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.search-input {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: calc(12.5% - 10px); /* Adjusted width to fit all inputs in one line */
+  min-width: 100px;
+  box-sizing: border-box;
+}
+
+.search-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.reset-button {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-button:hover,
+.reset-button:hover {
+  background-color: #0056b3;
+}
+
+.btn-view,
+.btn-edit,
+.btn-delete,
+.btn-quantity {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-view {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.btn-edit {
+  background-color: #ffa500; /* Orange */
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+.btn-quantity {
+  background-color: #45a049; /* Green */
+  color: white;
+}
+
+.btn-view:hover {
+  background-color: #45a049;
+}
+
+.btn-edit:hover {
+  background-color: #e69500;
+}
+
+.btn-delete:hover {
+  background-color: #d32f2f;
+}
+
+.btn-quantity:hover {
+  background-color: #45a049;
+}

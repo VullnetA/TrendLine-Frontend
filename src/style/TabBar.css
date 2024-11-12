@@ -1,0 +1,56 @@
+.tab-bar {
+  width: 180px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 90vh; /* Prevents it from exceeding the viewport height */
+  overflow-y: auto; /* Enables vertical scrolling only if needed */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  transition: width 0.3s;
+}
+
+.tab-bar:hover {
+  width: 190px; /* Slightly expand on hover for better visibility */
+}
+
+/* Styling for tab items and headers remains the same */
+
+.tab-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tab-item {
+  background: none;
+  border: none;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  color: #555;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.tab-item:hover {
+  background-color: #e6e6e6;
+  transform: translateX(5px); /* Adds a slight shift effect */
+}
+
+.tab-item:focus {
+  outline: none;
+  background-color: #ccc;
+}
+
+.tab-item.active {
+  background-color: #d4d4d4;
+  font-weight: bold;
+  color: #333;
+  border-left: 4px solid #333; /* Highlight the active tab */
+}
