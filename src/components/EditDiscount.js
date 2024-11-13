@@ -6,7 +6,7 @@ function EditDiscount() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [discount, setDiscount] = useState({
-    id: id, // Ensure `id` is included here
+    id: id,
     discountAmount: 0,
     discountPercentage: 0,
     expirationDate: "",
@@ -63,17 +63,13 @@ function EditDiscount() {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("User is not authenticated.");
 
-      // Log the discount object to confirm the payload structure
-      console.log("Updating Discount:", discount);
-
-      // Ensure we include all properties, including the id
       const response = await fetch(`https://localhost:7277/api/Discount`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(discount), // This includes id, discountAmount, discountPercentage, expirationDate
+        body: JSON.stringify(discount),
       });
 
       if (!response.ok) {
@@ -119,7 +115,7 @@ function EditDiscount() {
           <input
             type="date"
             name="expirationDate"
-            value={discount.expirationDate.split("T")[0]} // Display only the date part
+            value={discount.expirationDate.split("T")[0]}
             onChange={handleInputChange}
             className="edit-discount-input"
           />

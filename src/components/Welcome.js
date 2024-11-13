@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/Welcome.css"; // Ensure you have this CSS file for styling if needed
+import "../style/Welcome.css";
 
 const Welcome = ({ onLogout }) => {
   return (

@@ -24,40 +24,8 @@
 
 .customer-details-actions {
   display: flex;
-  flex-direction: column; /* Stack buttons vertically */
+  flex-direction: column;
   gap: 10px;
   align-items: center;
   margin-top: 20px;
-}
-
-.btn-delete,
-.btn-back {
-  width: 100px; /* Set a fixed width for consistency */
-  height: 40px; /* Set a fixed height for alignment */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-}
-
-.btn-delete {
-  background-color: #f44336; /* Red */
-}
-
-.btn-back {
-  background-color: #007bff; /* Blue */
-}
-
-.btn-delete:hover {
-  background-color: #d32f2f;
-}
-
-.btn-back:hover {
-  background-color: #0056b3;
 }

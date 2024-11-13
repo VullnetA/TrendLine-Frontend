@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../style/OrdersStyles.css"; // Ensure you have this CSS file for styling
+import "../style/OrdersStyles.css";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -11,7 +11,6 @@ function Orders() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Function to fetch all orders initially
     const fetchAllOrders = async () => {
       const token = localStorage.getItem("token");
 

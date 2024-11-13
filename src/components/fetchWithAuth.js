@@ -1,5 +1,5 @@
 export async function fetchWithAuth(url, options = {}) {
-  const token = localStorage.getItem("token"); // Adjust based on how you manage auth tokens
+  const token = localStorage.getItem("token");
 
   options.headers = {
     ...options.headers,

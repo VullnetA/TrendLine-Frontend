@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../style/OrderDetailsStyles.css"; // Ensure you have this CSS file for styling
+import "../style/OrderDetailsStyles.css";
 
 function OrderDetails() {
   const { id } = useParams();
@@ -39,7 +39,7 @@ function OrderDetails() {
 
         const data = await response.json();
         setOrder(data);
-        setNewStatus(data.status); // Set the initial dropdown value to the current status
+        setNewStatus(data.status);
       } catch (err) {
         console.error("Fetch error:", err);
         setError(err.message);
@@ -75,7 +75,6 @@ function OrderDetails() {
         throw new Error("Failed to update the order status.");
       }
 
-      // Update the order state to reflect the new status
       setOrder((prevOrder) => ({
         ...prevOrder,
         status: newStatus,

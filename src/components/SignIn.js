@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/AuthFormStyles.css";
-import logo from "../images/design.png"; // Import the image
+import logo from "../images/design.png";
 
 function SignIn({ onLogin }) {
   const [email, setEmail] = useState("");

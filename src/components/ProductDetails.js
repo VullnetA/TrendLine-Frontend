@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../style/ProductDetailsStyles.css"; // Create this CSS file for styling if needed
+import "../style/ProductDetailsStyles.css";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -71,7 +71,7 @@ function ProductDetails() {
 
       if (response.ok) {
         alert("Product deleted successfully");
-        navigate("/view-products"); // Redirect to products list after deletion
+        navigate("/view-products");
       } else {
         const errorData = await response.json();
         alert(`Failed to delete product: ${errorData.message}`);

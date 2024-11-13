@@ -152,6 +152,15 @@ function Products() {
   return (
     <div className="products-container">
       <h1 className="products-title">Product List</h1>
+
+      {/* Add Product Button */}
+      <button
+        onClick={() => navigate("/add-product")}
+        className="add-product-button"
+      >
+        Add Product
+      </button>
+
       <form onSubmit={handleSearch} className="search-form">
         <div className="search-fields">{renderSearchFields()}</div>
         <button type="submit" className="search-button">
