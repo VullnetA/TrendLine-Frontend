@@ -3,7 +3,7 @@
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 12px; /* Updated border radius */
+  border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   display: flex;
@@ -13,13 +13,13 @@
 .auth-title {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 24px; /* Adjust font size */
+  font-size: 24px;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Increase gap for better spacing */
+  gap: 20px;
   width: 100%;
 }
 
@@ -31,9 +31,9 @@
 .auth-form input,
 .auth-form textarea,
 .auth-form select {
-  padding: 12px; /* Increase padding for larger fields */
-  font-size: 16px; /* Increase font size for better readability */
-  border-radius: 8px; /* Add rounded corners */
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   outline: none;
   transition: border-color 0.3s;
@@ -42,14 +42,14 @@
 .auth-form input:focus,
 .auth-form textarea:focus,
 .auth-form select:focus {
-  border-color: #666; /* Change border color on focus */
+  border-color: #666;
 }
 
 .auth-button,
 .switch-button {
-  padding: 12px; /* Increase padding for larger buttons */
-  font-size: 16px; /* Increase font size */
-  border-radius: 8px; /* Add rounded corners */
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
   border: none;
   background-color: #333;
   color: #fff;
@@ -76,6 +76,6 @@
 .auth-logo {
   display: block;
   margin: 0 auto 20px;
-  width: 150px; /* Adjust size as needed */
+  width: 150px;
   height: auto;
 }

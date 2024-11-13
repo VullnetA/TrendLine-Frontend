@@ -25,7 +25,7 @@ function SignUp({ onSwitchToSignIn }) {
       firstName,
       lastName,
       address,
-      phoneNumber: String(phoneNumber), // Ensure it's a string
+      phoneNumber: String(phoneNumber),
       email,
       password,
     };
@@ -44,7 +44,7 @@ function SignUp({ onSwitchToSignIn }) {
         }
       );
 
-      console.log("Response status:", response.status); // Check status code
+      console.log("Response status:", response.status);
 
       if (response.ok) {
         console.log("Registration successful");

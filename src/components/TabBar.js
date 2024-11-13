@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../style/TabBar.css"; // Ensure you have this CSS file for styling
+import "../style/TabBar.css";
 
 function TabBar() {
   const navigate = useNavigate();
@@ -8,10 +8,7 @@ function TabBar() {
   return (
     <div className="tab-bar">
       <button className="tab-item" onClick={() => navigate("/view-products")}>
-        View Products
-      </button>
-      <button className="tab-item" onClick={() => navigate("/add-product")}>
-        Add Product
+        Products
       </button>
       <button className="tab-item" onClick={() => navigate("/view-orders")}>
         Orders

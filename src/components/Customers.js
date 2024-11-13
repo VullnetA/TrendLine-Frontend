@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../style/CustomerStyles.css"; // Make sure to create this CSS file for styling if needed
+import "../style/CustomerStyles.css";
 import { useNavigate } from "react-router-dom";
 
 function Customers() {

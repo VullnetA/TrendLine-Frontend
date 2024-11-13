@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchWithAuth } from "./fetchWithAuth"; // Custom fetch utility for authorized requests
-import "../style/FormStyles.css"; // Ensure you have this CSS file for styling
+import { fetchWithAuth } from "./fetchWithAuth";
+import "../style/FormStyles.css";
 
 function EditProduct() {
   const { id } = useParams();
@@ -22,7 +22,6 @@ function EditProduct() {
   const [sizes, setSizes] = useState([]);
 
   useEffect(() => {
-    // Mock data for dropdowns (replace with actual API calls if necessary)
     setBrands([
       { id: 4, name: "Adidas" },
       { id: 5, name: "Nike" },
@@ -58,7 +57,6 @@ function EditProduct() {
       { id: 11, label: "XXXL" },
     ]);
 
-    // Fetch existing product data to populate the form
     const fetchProduct = async () => {
       const token = localStorage.getItem("token");
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../style/ProductStockStyles.css"; // Create this CSS file for styling if needed
+import "../style/ProductStockStyles.css";
 
 function ProductStock() {
   const { id } = useParams();

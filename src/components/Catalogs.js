@@ -184,7 +184,7 @@ function Catalogs() {
         alert(
           `${type.charAt(0).toUpperCase() + type.slice(1)} deleted successfully`
         );
-        fetchCatalogData(type, getTypeSetter(type)); // Refresh data after deletion
+        fetchCatalogData(type, getTypeSetter(type));
       } else {
         throw new Error(`Failed to delete ${type}`);
       }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../style/CustomerDetailsStyles.css"; // Create this CSS file for styling if needed
+import "../style/CustomerDetailsStyles.css";
 
 function CustomerDetails() {
   const { id } = useParams();
@@ -74,7 +74,7 @@ function CustomerDetails() {
 
       if (response.ok) {
         alert("Customer deleted successfully");
-        navigate("/view-customers"); // Redirect to customers list after deletion
+        navigate("/view-customers");
       } else {
         const errorData = await response.json();
         alert(`Failed to delete customer: ${errorData.message}`);
