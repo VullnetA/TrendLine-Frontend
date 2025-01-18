@@ -23,38 +23,38 @@ function EditProduct() {
 
   useEffect(() => {
     setBrands([
-      { id: 4, name: "Adidas" },
-      { id: 5, name: "Nike" },
-      { id: 6, name: "Zara" },
-      { id: 7, name: "Levi's" },
-      { id: 8, name: "H&M" },
+      { id: 1, name: "Adidas" },
+      { id: 2, name: "Nike" },
+      { id: 3, name: "Zara" },
+      { id: 4, name: "Levi's" },
+      { id: 5, name: "H&M" },
     ]);
     setCategories([
-      { id: 3, name: "Casual Wear" },
-      { id: 4, name: "Formal Wear" },
-      { id: 5, name: "Sports Wear" },
-      { id: 6, name: "Outerwear" },
-      { id: 7, name: "Footwear" },
+      { id: 1, name: "Casual Wear" },
+      { id: 2, name: "Formal Wear" },
+      { id: 3, name: "Sports Wear" },
+      { id: 4, name: "Outerwear" },
+      { id: 5, name: "Footwear" },
     ]);
     setColors([
-      { id: 3, name: "Denim Blue" },
-      { id: 4, name: "Heather Gray" },
-      { id: 5, name: "Olive Green" },
-      { id: 6, name: "Mustard Yellow" },
-      { id: 7, name: "Rust" },
-      { id: 8, name: "Burgundy" },
-      { id: 9, name: "Navy" },
-      { id: 10, name: "Dusty Rose" },
+      { id: 1, name: "Denim Blue" },
+      { id: 2, name: "Heather Gray" },
+      { id: 3, name: "Olive Green" },
+      { id: 4, name: "Mustard Yellow" },
+      { id: 5, name: "Rust" },
+      { id: 6, name: "Burgundy" },
+      { id: 7, name: "Navy" },
+      { id: 8, name: "Dusty Rose" },
     ]);
     setSizes([
-      { id: 4, label: "XXS" },
-      { id: 5, label: "XS" },
-      { id: 6, label: "S" },
-      { id: 7, label: "M" },
-      { id: 8, label: "L" },
-      { id: 9, label: "XL" },
-      { id: 10, label: "XXL" },
-      { id: 11, label: "XXXL" },
+      { id: 1, label: "XXS" },
+      { id: 2, label: "XS" },
+      { id: 3, label: "S" },
+      { id: 4, label: "M" },
+      { id: 5, label: "L" },
+      { id: 6, label: "XL" },
+      { id: 7, label: "XXL" },
+      { id: 8, label: "XXXL" },
     ]);
 
     const fetchProduct = async () => {

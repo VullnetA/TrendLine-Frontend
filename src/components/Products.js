@@ -29,26 +29,54 @@ function Products() {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("User is not authenticated.");
 
-      const response = await fetch(`https://localhost:7277/api/Product`, {
-        method: "GET",
+      const query = `
+        query {
+          getProducts {
+            id
+            name
+            description
+            price
+            finalPrice
+            quantity
+            gender
+            brand
+            category
+            color
+            size
+          }
+        }
+      `;
+
+      const response = await fetch("https://localhost:7277/graphql", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ query }),
       });
 
-      if (!response.ok) {
-        handleFetchErrors(response);
-      } else {
-        const data = await response.json();
-        setProducts(data);
-        setSearchPerformed(false);
+      const result = await response.json();
+
+      if (result.errors) {
+        console.error("GraphQL Errors:", result.errors);
+        throw new Error(result.errors[0].message); // Display the first error message
       }
+
+      if (!result.data || !result.data.getProducts) {
+        throw new Error("No products found.");
+      }
+
+      setProducts(result.data.getProducts);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAddProduct = () => {
+    navigate("/add-product"); // Navigate to the AddProduct component
   };
 
   const fetchProducts = async (queryParams = "") => {
@@ -151,16 +179,12 @@ function Products() {
 
   return (
     <div className="products-container">
-      <h1 className="products-title">Product List</h1>
-
-      {/* Add Product Button */}
-      <button
-        onClick={() => navigate("/add-product")}
-        className="add-product-button"
-      >
-        Add Product
-      </button>
-
+      <div className="products-header">
+        <h1 className="products-title">Product List</h1>
+        <button className="add-product-button" onClick={handleAddProduct}>
+          Add Product
+        </button>
+      </div>
       <form onSubmit={handleSearch} className="search-form">
         <div className="search-fields">{renderSearchFields()}</div>
         <button type="submit" className="search-button">
@@ -261,7 +285,6 @@ function Products() {
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Quantity</th>
             <th>Gender</th>
             <th>Brand</th>
             <th>Category</th>
@@ -276,7 +299,6 @@ function Products() {
               <td>{product.name}</td>
               <td>{product.description}</td>
               <td>${product.finalPrice.toFixed(2)}</td>
-              <td>{product.quantity}</td>
               <td>{product.gender}</td>
               <td>{product.brand}</td>
               <td>{product.category}</td>
