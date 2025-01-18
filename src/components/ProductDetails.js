@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../style/ProductDetailsStyles.css";
+import { createClient } from "graphql-ws";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -9,8 +10,19 @@ function ProductDetails() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // Create GraphQL WebSocket client
+  const subscriptionClient = createClient({
+    url: "wss://localhost:7277/graphql",
+    connectionParams: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
   useEffect(() => {
     fetchProductDetails();
+    subscribeToStockUpdates();
+    // Clean up subscription on component unmount
+    return () => subscriptionClient.dispose();
   }, [id]);
 
   const fetchProductDetails = async () => {
@@ -67,6 +79,34 @@ function ProductDetails() {
     return data;
   };
 
+  const subscribeToStockUpdates = () => {
+    subscriptionClient.subscribe(
+      {
+        query: `
+          subscription {
+            onProductStockUpdated {
+              id
+              name
+              quantity
+            }
+          }
+        `,
+      },
+      {
+        next: ({ data }) => {
+          if (data?.onProductStockUpdated?.id === parseInt(id)) {
+            setProduct((prev) => ({
+              ...prev,
+              quantity: data.onProductStockUpdated.quantity,
+            }));
+          }
+        },
+        error: (err) => console.error("Subscription error:", err),
+        complete: () => console.log("Subscription completed."),
+      }
+    );
+  };
+
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this product?"))
       return;
@@ -120,7 +160,7 @@ function ProductDetails() {
           </p>
           <p>
             <strong>Quantity:</strong> {product.quantity}{" "}
-            {/* Uses currentQuantity as quantity */}
+            {/* Updated in real-time */}
           </p>
           <p>
             <strong>Gender:</strong> {product.gender}
