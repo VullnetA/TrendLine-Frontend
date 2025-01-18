@@ -46,16 +46,19 @@ function App() {
 
 function AppContent({ isAuthenticated, setIsAuthenticated, role, setRole }) {
   const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false); // Track first login
 
   const handleLogin = () => {
     const userRole = localStorage.getItem("role") || "User";
     setIsAuthenticated(true);
     setRole(userRole);
+    setLoggedIn(true); // Set loggedIn to true on initial login
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     setRole(null);
+    setLoggedIn(false); // Reset loggedIn on logout
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     localStorage.removeItem("isAuthenticated");
@@ -68,6 +71,7 @@ function AppContent({ isAuthenticated, setIsAuthenticated, role, setRole }) {
     if (token && userRole) {
       setIsAuthenticated(true);
       setRole(userRole);
+      setLoggedIn(true); // Set loggedIn if user already logged in
     } else {
       setIsAuthenticated(false);
       setRole(null);
@@ -76,14 +80,19 @@ function AppContent({ isAuthenticated, setIsAuthenticated, role, setRole }) {
 
   // Initial redirection after login based on role
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && loggedIn) {
       if (role === "Customer") {
         navigate("/shop");
-      } else if (role === "Admin" && window.location.pathname === "/") {
+      } else if (
+        role === "Admin" ||
+        role === "Advanced User" ||
+        role === "Simple User"
+      ) {
         navigate("/welcome");
       }
+      setLoggedIn(false); // Disable further automatic redirects
     }
-  }, [isAuthenticated, role, navigate]);
+  }, [isAuthenticated, role, navigate, loggedIn]);
 
   return (
     <div className="App">
@@ -91,9 +100,7 @@ function AppContent({ isAuthenticated, setIsAuthenticated, role, setRole }) {
       <div className="main-layout">
         {isAuthenticated && role !== "Customer" && (
           <div className="sidebar">
-            {(role === "Admin" ||
-              role === "Advanced User" ||
-              role === "Simple User") && <TabBar />}
+            <TabBar role={role} />
           </div>
         )}
         <div className="content">

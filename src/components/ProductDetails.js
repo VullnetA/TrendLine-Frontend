@@ -10,49 +10,62 @@ function ProductDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        setError("User is not authenticated.");
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const response = await fetch(
-          `https://localhost:7277/api/Product/${id}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          if (response.status === 404) {
-            throw new Error("Product not found.");
-          }
-          if (response.status === 401) {
-            throw new Error("Unauthorized. Please log in again.");
-          }
-          throw new Error("Failed to fetch product details");
-        }
-
-        const data = await response.json();
-        setProduct(data);
-      } catch (err) {
-        console.error("Fetch error:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
+    fetchProductDetails();
   }, [id]);
+
+  const fetchProductDetails = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("User is not authenticated.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://localhost:7277/api/Product/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("Product not found.");
+        }
+        if (response.status === 401) {
+          throw new Error("Unauthorized. Please log in again.");
+        }
+        throw new Error("Failed to fetch product details");
+      }
+
+      const data = await response.json();
+      const quantityData = await fetchProductQuantity(id);
+      setProduct({ ...data, quantity: quantityData.currentQuantity });
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchProductQuantity = async (productId) => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      `https://localhost:7277/api/Product/quantity/${productId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  };
 
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this product?"))
@@ -106,7 +119,8 @@ function ProductDetails() {
             <strong>Final Price:</strong> ${product.finalPrice.toFixed(2)}
           </p>
           <p>
-            <strong>Quantity:</strong> {product.quantity}
+            <strong>Quantity:</strong> {product.quantity}{" "}
+            {/* Uses currentQuantity as quantity */}
           </p>
           <p>
             <strong>Gender:</strong> {product.gender}

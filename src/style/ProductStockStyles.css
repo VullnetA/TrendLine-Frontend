@@ -24,7 +24,8 @@
 }
 
 .btn-update-stock,
-.btn-back {
+.btn-back,
+.btn-submit {
   display: inline-block;
   padding: 10px 20px;
   margin: 10px 5px;
@@ -34,12 +35,14 @@
   font-size: 16px;
 }
 
-.btn-update-stock {
+.btn-update-stock,
+.btn-submit {
   background-color: #4caf50;
   color: white;
 }
 
-.btn-update-stock:hover {
+.btn-update-stock:hover,
+.btn-submit:hover {
   background-color: #45a049;
 }
 
