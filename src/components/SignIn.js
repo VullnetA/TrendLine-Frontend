@@ -12,13 +12,22 @@ function SignIn({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://localhost:7277/api/Auth/login", {
+      // Try using the full URL with your machine's IP instead of localhost
+      const response = await fetch("http://localhost:5000/api/v1/Auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
+          // Add CORS headers
+          "Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       });
+
+      console.log("Response received:", response);
 
       if (response.ok) {
         const data = await response.json();
@@ -26,17 +35,21 @@ function SignIn({ onLogin }) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.roles[0]);
         localStorage.setItem("isAuthenticated", "true");
-
-        // Call onLogin to update the parent state and trigger redirection in AppContent
         onLogin();
       } else {
-        const errorData = await response.json();
-        console.error("Login failed:", errorData);
-        setError("Login failed: " + errorData.message);
+        console.log("Response not ok:", response.status);
+        const errorData = await response.text();
+        console.log("Error data:", errorData);
+        setError("Login failed: " + (errorData || response.statusText));
       }
     } catch (err) {
-      console.error("Network error:", err);
-      setError("An error occurred. Please try again.");
+      console.log("Fetch error:", err);
+      console.log("Error details:", {
+        message: err.message,
+        name: err.name,
+        stack: err.stack,
+      });
+      setError("Network error: " + err.message);
     }
   };
 
@@ -46,7 +59,7 @@ function SignIn({ onLogin }) {
       <h1 className="auth-title">Sign In</h1>
       <form onSubmit={handleSubmit} className="auth-form">
         <div className="form-group">
-          <label>Email:</label>
+          <label>EmailVVVVVVV:</label>
           <input
             type="email"
             value={email}
