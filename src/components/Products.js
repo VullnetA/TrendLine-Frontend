@@ -29,45 +29,21 @@ function Products() {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("User is not authenticated.");
 
-      const query = `
-        query {
-          getProducts {
-            id
-            name
-            description
-            price
-            finalPrice
-            quantity
-            gender
-            brand
-            category
-            color
-            size
-          }
-        }
-      `;
-
-      const response = await fetch("https://localhost:7277/graphql", {
-        method: "POST",
+      const response = await fetch(`https://localhost:5433/api/Product`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ query }),
       });
 
-      const result = await response.json();
-
-      if (result.errors) {
-        console.error("GraphQL Errors:", result.errors);
-        throw new Error(result.errors[0].message); // Display the first error message
+      if (!response.ok) {
+        handleFetchErrors(response);
+      } else {
+        const data = await response.json();
+        setProducts(data);
+        setSearchPerformed(false);
       }
-
-      if (!result.data || !result.data.getProducts) {
-        throw new Error("No products found.");
-      }
-
-      setProducts(result.data.getProducts);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -85,7 +61,7 @@ function Products() {
       if (!token) throw new Error("User is not authenticated.");
 
       const response = await fetch(
-        `https://localhost:7277/api/Product/search${queryParams}`,
+        `http://localhost:5000/api/v1/Product/search${queryParams}`,
         {
           method: "GET",
           headers: {
